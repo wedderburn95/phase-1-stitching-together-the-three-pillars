@@ -14,7 +14,7 @@ const colorStates = {
 // we want to make clickable. Without JavaScript, clicking on these heart shapes
 // does nothing. Uncomment the code and refresh the demo page. 
 
-// const articleHearts = document.querySelectorAll(".like-glyph");
+const articleHearts = document.querySelectorAll(".like-glyph");
 
 function likeCallback(e) {
   const heart = e.target;
@@ -25,10 +25,14 @@ function likeCallback(e) {
       // mimicking Pillar 3 (Server Communication) to only update the screen if
       // the sending of information to the server succeeds.
       alert("You notified the server!");
-      // alert(serverMessage);
-      // heart.innerText = glyphStates[heart.innerText];
-      // heart.style.color = colorStates[heart.style.color];
+
+      alert(serverMessage);
+      heart.innerText = glyphStates[heart.innerText];
+      heart.style.color = colorStates[heart.style.color];
     })
+    // You'll see that it's still not working. That's because we've uncommented 
+    // the code that mocks our communication with the server, but we haven't yet 
+    // told JavaScript to listen for the "click" event.
     .catch(function(error) {
       alert("Something went wrong!");
     });
@@ -38,9 +42,12 @@ function likeCallback(e) {
 // work, we need to add a click event listener to the elements we identified in
 // STEP 1. That's Pillar 2, event handling. Uncomment this code:
 
-// for (const glyph of articleHearts) {
-//   glyph.addEventListener("click", likeCallback);
-// }
+for (const glyph of articleHearts) {
+  glyph.addEventListener("click", likeCallback);
+}
+// We've activated all the parts of our code that stitch together the three pillars 
+// of front-end web programming. Let's go back to your browser and see what Simple 
+// Liker looks like in action. You should now be able to like and unlike each post.
 
 // STEP 4: 
 
